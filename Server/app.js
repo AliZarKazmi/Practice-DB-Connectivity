@@ -15,6 +15,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+//middleware
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -27,7 +28,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/RealTalk")
 .then(()=>console.log('Mongodb connected'))
 .catch((error)=>console.log(error));
 
-
+//api call
 app.use('/agent-performance', performanceRouter);
 app.use('/final-data', finaldataRouter);
 
